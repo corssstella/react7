@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './todo.css'
+import useLastTodo from "../stores/store2";
+import useTodoList from "../stores/store3";
 
- export const TodoList = () => {
-    const [todos, setTodos] = useState([]);
-    const addTodo = (todo) => {
-    setTodos([...todos, todo]);
-  };
+export const TodoList = () => {
+  const { change } = useLastTodo();
+  const { todos, setTodos, addTodo } = useTodoList();
 
   const toggleTodo = (index) => {
     const updatedTodos = [...todos];
     updatedTodos[index].completed = !updatedTodos[index].completed;
     setTodos(updatedTodos);
   };
-
+  
   return (
     <div class="all">
       <h2>Список дел</h2>
@@ -26,6 +25,7 @@ import './todo.css'
       </ul>
       <form onSubmit={(e) => {
         e.preventDefault();
+        change(e.target.elements.todo.value);
         const todo = {
           text: e.target.elements.todo.value,
           completed: false
@@ -37,12 +37,12 @@ import './todo.css'
         <button type="submit">Добавить</button>
       </form>
         <div class="home">
-            <NavLink to="/">
+          <NavLink to="/">
             To home
-            </NavLink>
+          </NavLink>
         </div>
     </div>
   );
- }
+}
 
- export default TodoList;
+export default TodoList;

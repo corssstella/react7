@@ -9,7 +9,7 @@ const Hello = () => {
   return (
     <div class="hello">
       <NavLink to="/todolist" onClick={increment}>
-        Hello World!
+        -ToDoList-
       </NavLink>
       <h3>Счетчик переходов на страницу TodoList: {count}</h3>
       <h3>Последнее введённое дело: {LastTodo}</h3>

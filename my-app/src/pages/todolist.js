@@ -12,9 +12,9 @@ export const TodoList = () => {
     updatedTodos[index].completed = !updatedTodos[index].completed;
     setTodos(updatedTodos);
   };
-  
+
   return (
-    <div class="all">
+    <div className="all">
       <h2>Список дел</h2>
       <ul>
         {todos.map((todo, index) => (
@@ -36,11 +36,11 @@ export const TodoList = () => {
         <input type="text" name="todo" placeholder="Добавить дело" />
         <button type="submit">Добавить</button>
       </form>
-        <div class="home">
-          <NavLink to="/">
-            To home
-          </NavLink>
-        </div>
+      <div className="home">
+        <NavLink to="/">
+          To home
+        </NavLink>
+      </div>
     </div>
   );
 }
